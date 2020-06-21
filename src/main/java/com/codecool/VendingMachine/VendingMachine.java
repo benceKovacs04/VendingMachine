@@ -8,5 +8,5 @@ public interface VendingMachine
 	void insertCoin(Coins coin);
 	int refund();
 	Order getBeverage(BeverageType type);
-	void resetInventory();
+	void resetInventory(int amount);
 }
