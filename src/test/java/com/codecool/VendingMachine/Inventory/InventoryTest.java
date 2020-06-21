@@ -47,6 +47,11 @@ public class InventoryTest
 		assertNull(bev);
 	}
 	
-	
+	@Test
+	public void soldOneCoke() 
+	{
+		inventory.getBeverage(BeverageType.Coke);
+		inventory.getConsumptionInfo();
+	}
 	
 }

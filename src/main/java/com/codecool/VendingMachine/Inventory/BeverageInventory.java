@@ -11,6 +11,7 @@ public class BeverageInventory implements Inventory {
 	
 	private static final int DEFAULT_AMOUNT = 10;
 	private HashMap<BeverageType, Queue<Beverage>> inventory = new HashMap<BeverageType, Queue<Beverage>>();
+	private HashMap<BeverageType, Integer> soldItems = new HashMap<BeverageType, Integer>();
 	
 	public BeverageInventory() 
 	{
@@ -20,7 +21,11 @@ public class BeverageInventory implements Inventory {
 	
 	private void init() 
 	{
-		Stream.of(BeverageType.values()).forEach(bev -> inventory.put(bev, new LinkedList<Beverage>()));
+		Stream.of(BeverageType.values()).forEach(bev -> 
+			{
+				inventory.put(bev, new LinkedList<Beverage>());
+				soldItems.put(bev, 0);
+			});
 	}
 
 	@Override
@@ -43,6 +48,7 @@ public class BeverageInventory implements Inventory {
 		try 
 		{
 			Beverage bev = inventory.get(type).remove();
+			soldItems.put(type, soldItems.get(type) + 1);
 			return bev;
 		}
 		catch(NoSuchElementException e) 
@@ -52,8 +58,11 @@ public class BeverageInventory implements Inventory {
 	}
 
 	@Override
-	public void getInventoryInfo() {
-		// TODO Auto-generated method stub
+	public void getConsumptionInfo() 
+	{
+		soldItems.entrySet().forEach(item ->System.out.println(String.format("Sold %d of %s", item.getValue(), item.getKey()))); 
+		
+		
 		
 	}
 

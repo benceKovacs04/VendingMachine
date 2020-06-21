@@ -6,6 +6,6 @@ public interface Inventory
 {
 	void resetInventory(int amount);
 	Beverage getBeverage(BeverageType type);
-	void getInventoryInfo();
+	void getConsumptionInfo();
 	
 }
