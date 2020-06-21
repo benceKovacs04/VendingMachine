@@ -2,7 +2,6 @@ package com.codecool.VendingMachine.Inventory;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
-import org.junit.Before;
 import org.junit.Test;
 
 public class BeverageTypeTest 

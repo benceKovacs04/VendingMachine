@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.junit.Test;
 
-import com.codecool.VendingMachine.Inventory.BeverageType;
 
 public class CoinsTest 
 {
