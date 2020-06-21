@@ -28,11 +28,12 @@ public class BeverageInventory implements Inventory {
 	{
 		Stream.of(BeverageType.values()).forEach(bev -> 
 		{
-			Queue<Beverage> q = inventory.get(bev);
+			Queue<Beverage> q = new LinkedList<Beverage>();
 			for(int i = 0; i < amount; i++) 
 			{
 				q.add(bev.createInstance());
 			}
+			inventory.put(bev, q);
 		});
 		
 	}
