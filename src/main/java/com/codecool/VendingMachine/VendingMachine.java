@@ -1,5 +1,10 @@
 package com.codecool.VendingMachine;
 
-public interface VendingMachine {
+import com.codecool.VendingMachine.Inventory.Beverage.Beverage;
 
+public interface VendingMachine 
+{
+	void insertCoin(Coins coin);
+	int refund();
+	Beverage getBeverage();
 }
