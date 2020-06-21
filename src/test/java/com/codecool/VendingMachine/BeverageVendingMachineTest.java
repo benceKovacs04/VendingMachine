@@ -49,5 +49,23 @@ public class BeverageVendingMachineTest
 		assertNull(machine.getBeverage(BeverageType.Coke));
 	}
 	
+	@Test
+	public void machineGivesBackChange() 
+	{
+		machine.insertCoin(Coins.Quarter);
+		machine.insertCoin(Coins.Dime);
+		Order order = machine.getBeverage(BeverageType.Coke);
+		assertThat(order.change, is(10));
+	}
+	
+	@Test
+	public void BalanceIsZeroAfterPurchase() 
+	{
+		machine.insertCoin(Coins.Quarter);
+		machine.insertCoin(Coins.Dime);
+		Order order = machine.getBeverage(BeverageType.Coke);
+		assertThat(machine.refund(), is(0));
+	}
+	
 	
 }

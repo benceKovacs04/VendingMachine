@@ -32,8 +32,10 @@ public class BeverageVendingMachine implements VendingMachine {
 	@Override
 	public Order getBeverage(BeverageType type) {
 		if(balance >= type.getPrice()) 
-		{
-			return new Order(inventory.getBeverage(type), 0);			
+		{	
+			Order order = new Order(inventory.getBeverage(type), balance - type.getPrice());
+			balance = 0;
+			return order;			
 		}
 		else 
 		{
