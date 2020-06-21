@@ -63,9 +63,17 @@ public class BeverageVendingMachineTest
 	{
 		machine.insertCoin(Coins.Quarter);
 		machine.insertCoin(Coins.Dime);
-		Order order = machine.getBeverage(BeverageType.Coke);
+		machine.getBeverage(BeverageType.Coke);
 		assertThat(machine.refund(), is(0));
 	}
 	
+	@Test
+	public void canResetInventory() 
+	{
+		Inventory mockInventory = new MockInventory();
+		machine = new BeverageVendingMachine(mockInventory);
+		machine.resetInventory();
+		assertThat(mockInventory, is(true));
+	}
 	
 }

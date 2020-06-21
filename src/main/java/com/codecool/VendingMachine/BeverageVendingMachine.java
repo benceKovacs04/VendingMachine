@@ -43,4 +43,10 @@ public class BeverageVendingMachine implements VendingMachine {
 		}
 	}
 
+	@Override
+	public void resetInventory() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
