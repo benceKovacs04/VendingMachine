@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.codecool.VendingMachine.Inventory.Beverage.Beverage;
-import com.codecool.VendingMachine.Inventory.Beverage.Coke;
+import com.codecool.VendingMachine.Inventory.Beverage.*;
 
 public class InventoryTest 
 {	
@@ -19,10 +19,23 @@ public class InventoryTest
 	}
 	
 	@Test
-	public void canGetBeverage() 
+	public void canGetCoke() 
 	{
 		Coke bev = (Coke) inventory.getBeverage(BeverageType.Coke);
 		assertThat(bev, instanceOf(Coke.class));
+	}
+	
+	@Test
+	public void canGetPepsi() 
+	{
+		Pepsi bev = (Pepsi) inventory.getBeverage(BeverageType.Pepsi);
+		assertThat(bev, instanceOf(Pepsi.class));
+	}
+	@Test
+	public void canGetSoda() 
+	{
+		Soda bev = (Soda) inventory.getBeverage(BeverageType.Soda);
+		assertThat(bev, instanceOf(Soda.class));
 	}
 	
 	@Test
