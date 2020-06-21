@@ -6,7 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.codecool.VendingMachine.Inventory.BeverageInventory;
+import com.codecool.VendingMachine.Inventory.BeverageType;
 import com.codecool.VendingMachine.Inventory.Inventory;
+import com.codecool.VendingMachine.Inventory.Beverage.Coke;
 
 public class BeverageVendingMachineTest 
 {
@@ -30,5 +32,20 @@ public class BeverageVendingMachineTest
 	{
 		machine.insertCoin(Coins.Dime);
 		assertThat(machine.refund(), is(10));
+	}
+	
+	@Test
+	public void balanceStartsFromZeroAfterRefund() 
+	{
+		machine.insertCoin(Coins.Dime);
+		machine.refund();
+		machine.insertCoin(Coins.Quarter);
+		assertThat(machine.refund(), is(25));
+	}
+	
+	@Test
+	public void cantReturnBeverageOnInsufficentBalance() 
+	{
+		assertNull(machine.getBeverage(BeverageType.Coke));
 	}
 }

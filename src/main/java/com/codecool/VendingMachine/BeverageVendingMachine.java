@@ -1,5 +1,6 @@
 package com.codecool.VendingMachine;
 
+import com.codecool.VendingMachine.Inventory.BeverageType;
 import com.codecool.VendingMachine.Inventory.Inventory;
 import com.codecool.VendingMachine.Inventory.Beverage.Beverage;
 
@@ -17,20 +18,27 @@ public class BeverageVendingMachine implements VendingMachine {
 
 	@Override
 	public void insertCoin(Coins coin) {
-		// TODO Auto-generated method stub
+		balance += coin.getValue();
 		
 	}
 
 	@Override
 	public int refund() {
-		// TODO Auto-generated method stub
-		return 0;
+		int current = balance;
+		balance = 0;
+		return current;
 	}
 
 	@Override
-	public Beverage getBeverage() {
-		// TODO Auto-generated method stub
-		return null;
+	public Beverage getBeverage(BeverageType type) {
+		if(balance >= type.getPrice()) 
+		{
+			return inventory.getBeverage(type);			
+		}
+		else 
+		{
+			return null;
+		}
 	}
 
 }
