@@ -7,5 +7,5 @@ public interface VendingMachine
 {
 	void insertCoin(Coins coin);
 	int refund();
-	Beverage getBeverage(BeverageType type);
+	Order getBeverage(BeverageType type);
 }

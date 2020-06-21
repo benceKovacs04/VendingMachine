@@ -48,4 +48,6 @@ public class BeverageVendingMachineTest
 	{
 		assertNull(machine.getBeverage(BeverageType.Coke));
 	}
+	
+	
 }
