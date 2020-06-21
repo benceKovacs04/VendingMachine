@@ -4,8 +4,8 @@ import com.codecool.VendingMachine.Inventory.Beverage.Beverage;
 
 public interface Inventory 
 {
-	void resetInventory();
-	Beverage getBeverage();
+	void resetInventory(int amount);
+	Beverage getBeverage(BeverageType type);
 	void getInventoryInfo();
 	
 }

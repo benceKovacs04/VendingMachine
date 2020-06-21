@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.junit.Test;
 
+import com.codecool.VendingMachine.Inventory.Beverage.Coke;
+
 public class BeverageTypeTest 
 {
 	@Test
@@ -22,6 +24,12 @@ public class BeverageTypeTest
 	public void sodaPriceIs45() 
 	{
 		assertThat(BeverageType.Soda.getPrice(), is(45));
+	}
+	
+	@Test
+	public void cokeTypeCreatesCokeInstane() 
+	{
+		assertThat(BeverageType.Coke.createInstance(), instanceOf(Coke.class));
 	}
 	
 }
