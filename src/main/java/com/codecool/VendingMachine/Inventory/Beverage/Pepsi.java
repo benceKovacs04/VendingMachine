@@ -1,5 +1,11 @@
 package com.codecool.VendingMachine.Inventory.Beverage;
 
-public class Pepsi extends Beverage {
+import com.codecool.VendingMachine.Inventory.BeverageType;
 
+public class Pepsi extends Beverage 
+{
+	public Pepsi() 
+	{
+		this.price = BeverageType.Pepsi.getPrice();
+	}
 }
