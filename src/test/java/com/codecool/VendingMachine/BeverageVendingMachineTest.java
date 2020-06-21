@@ -3,17 +3,31 @@ package com.codecool.VendingMachine;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.Mockito.*;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import com.codecool.VendingMachine.Inventory.BeverageInventory;
 import com.codecool.VendingMachine.Inventory.BeverageType;
 import com.codecool.VendingMachine.Inventory.Inventory;
-import com.codecool.VendingMachine.Inventory.Beverage.Coke;
 
+@RunWith(MockitoJUnitRunner.class)
 public class BeverageVendingMachineTest 
 {
-	private VendingMachine machine;
+	@Rule
+	public MockitoRule initRule = MockitoJUnit.rule();
 	
+	@Mock
+	Inventory mockInventory;
+	
+	private VendingMachine machine;
+		
 	@Before
 	public void setUpVendingMachine() 
 	{
@@ -70,7 +84,9 @@ public class BeverageVendingMachineTest
 	@Test
 	public void canResetInventory() 
 	{
-		
+		machine = new BeverageVendingMachine(mockInventory);
+		machine.resetInventory(10);
+		Mockito.verify(mockInventory).resetInventory(10);
 	}
 	
 }

@@ -2,7 +2,6 @@ package com.codecool.VendingMachine;
 
 import com.codecool.VendingMachine.Inventory.BeverageType;
 import com.codecool.VendingMachine.Inventory.Inventory;
-import com.codecool.VendingMachine.Inventory.Beverage.Beverage;
 
 public class BeverageVendingMachine implements VendingMachine {
 	
