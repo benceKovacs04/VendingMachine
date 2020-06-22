@@ -38,9 +38,14 @@ public class InventoryTest
 		assertThat(bev, instanceOf(Soda.class));
 	}
 	
+	
 	@Test
-	public void resetInventorySetsCorrectAmount() 
+	public void resetInventorySetsCorrectAmountReturnsNullIfEmpty() 
 	{
+		// This tests proves that resetting the inventory works, and the inventory return
+		// null if there is no product left.
+		
+		
 		inventory.resetInventory(1);
 		inventory.getBeverage(BeverageType.Coke);
 		Beverage bev = inventory.getBeverage(BeverageType.Coke);

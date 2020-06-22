@@ -45,16 +45,14 @@ public class BeverageInventory implements Inventory {
 
 	@Override
 	public Beverage getBeverage(BeverageType type) {
-		try 
+		Queue<Beverage> q = inventory.get(type);
+		if(!q.isEmpty()) 
 		{
-			Beverage bev = inventory.get(type).remove();
+			Beverage bev = q.remove();
 			soldItems.put(type, soldItems.get(type) + 1);
-			return bev;
+			return bev;			
 		}
-		catch(NoSuchElementException e) 
-		{
-			return null;
-		}
+		return null;
 	}
 
 	@Override
