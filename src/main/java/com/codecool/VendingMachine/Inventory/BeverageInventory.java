@@ -17,13 +17,11 @@ public class BeverageInventory implements Inventory {
 	public BeverageInventory() 
 	{
 		init();
-		resetInventory(DEFAULT_AMOUNT);
 	}
 	
 	private void init() 
 	{
-		this.inventory = Stream.of(BeverageType.values())
-				.collect(Collectors.toMap(x -> x, x -> new LinkedList<Beverage>()));
+		resetInventory(DEFAULT_AMOUNT);
 		
 		this.soldItems = Stream.of(BeverageType.values())
 				.collect(Collectors.toMap(x -> x, x -> 0));
@@ -32,16 +30,16 @@ public class BeverageInventory implements Inventory {
 	@Override
 	public void resetInventory(int amount) 
 	{
-		Stream.of(BeverageType.values()).forEach(bev -> 
-		{
-			Queue<Beverage> q = new LinkedList<Beverage>();
-			for(int i = 0; i < amount; i++) 
-			{
-				q.add(bev.createInstance());
-			}
-			inventory.put(bev, q);
-		});
-		
+		this.inventory = Stream.of(BeverageType.values())
+				.collect(Collectors.toMap(bev -> bev, bev -> 
+				{
+					Queue<Beverage> q = new LinkedList<Beverage>();
+					for(int i = 0; i < amount; i++) 
+					{
+						q.add(bev.createInstance());
+					}
+					return q;
+				}));
 	}
 
 	@Override
